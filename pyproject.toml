@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-everything-search"
+version = "0.1.0"
+description = "An MCP server for Everything (voidtools) file search"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "essovius", email = "" }
+]
+keywords = ["mcp", "everything", "voidtools", "file-search", "claude"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.scripts]
+mcp-everything-search = "mcp_everything_search:main"
+
+[project.urls]
+Homepage = "https://github.com/essovius/mcp-everything-search"
+Repository = "https://github.com/essovius/mcp-everything-search"
+Issues = "https://github.com/essovius/mcp-everything-search/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_everything_search"]
