@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0] - 2025-01-01
+
+### Added
+- `search_regex` - Search using regular expressions
+- `search_folders` - Find only directories
+- `search_by_attributes` - Filter by hidden, system, read-only, compressed, encrypted
+- `search_empty_folders` - Find empty directories
+- `search_large_files` - Find files over a specified size
+- `search_with_details` - Get detailed info (size, dates) in results
+- `get_result_count` - Quick count without listing files
+- `get_total_size` - Calculate total size of matching files
+- `export_search_results` - Export to txt, csv, json, m3u, m3u8, tsv, efu
+- `folder_path` parameter added to most search tools
+- `sort_by` parameter for custom result ordering
+- `files_only` and `folders_only` filters
+- Added "code" file type category
+
+### Fixed
+- **BREAKING**: Fixed `folder_path` filter - now uses correct `-path` argument
+- Improved error messages with installation hints
+
+### Changed
+- Complete rewrite for better organization
+- All search tools now support folder path filtering
+
 ## [0.1.1] - 2025-01-01
 
 ### Fixed

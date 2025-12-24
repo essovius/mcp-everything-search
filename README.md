@@ -5,15 +5,15 @@
 
 An MCP (Model Context Protocol) server that integrates [Everything](https://www.voidtools.com/) file search with Claude Desktop. Search your entire Windows filesystem instantly from Claude.
 
-![Demo](https://github.com/yourusername/mcp-everything-search/raw/main/demo.gif)
-
 ## Features
 
 - ⚡ **Instant search** - Leverages Everything's lightning-fast file indexing
-- 🔍 **Multiple search modes** - Basic search, filtered search, type-based search
-- 📁 **File operations** - Get file info, open file locations
+- 🔍 **Multiple search modes** - Basic, filtered, regex, type-based, attribute-based
+- 📁 **Folder operations** - Search within specific paths, find empty folders
+- 📊 **Statistics** - Get file counts and total sizes without listing files
 - 🕐 **Recent files** - Find recently modified files
 - 📋 **Duplicate finder** - Locate files with the same name
+- 💾 **Export** - Save results to txt, csv, json, and more
 
 ## Prerequisites
 
@@ -91,32 +91,62 @@ Then **restart Claude Desktop**.
 
 ## Available Tools
 
+### Basic Search
 | Tool | Description |
 |------|-------------|
-| `search_files` | Basic file search with wildcards (`*`, `?`) |
-| `search_with_filters` | Search with extension, size, and path filters |
-| `search_by_type` | Search by category (audio, video, image, document, etc.) |
+| `search_files` | Basic file search with wildcards (`*`, `?`), sorting options |
+| `search_with_filters` | Search with extension, size, path filters, files/folders only |
+| `search_regex` | Search using regular expressions |
+
+### Specialized Search
+| Tool | Description |
+|------|-------------|
+| `search_by_type` | Search by category: audio, video, image, document, executable, compressed, code |
+| `search_folders` | Find only directories |
 | `search_recent_files` | Find recently modified files |
 | `search_duplicates` | Find files with the same name |
+| `search_by_attributes` | Filter by hidden, system, read-only, compressed, encrypted |
+| `search_empty_folders` | Find empty directories |
+| `search_large_files` | Find files over a specified size |
+
+### Utilities
+| Tool | Description |
+|------|-------------|
+| `search_with_details` | Search with detailed output (size, dates) |
+| `get_result_count` | Get count of matches without listing (fast) |
+| `get_total_size` | Get total size of all matching files |
 | `open_file_location` | Open containing folder in Explorer |
 | `get_file_info` | Get file size, dates, and details |
+| `export_search_results` | Export to txt, csv, json, m3u, m3u8, tsv, efu |
 
 ## Example Queries
 
 Ask Claude things like:
 
-- "Find all Python files containing 'config'"
+- "Find all Python files in D:\Projects"
 - "Search for PDF files larger than 10mb"
 - "Find images modified in the last 3 days"
 - "Look for duplicate files named config.json"
 - "Find all video files in my Downloads folder"
-- "Get info about C:\Users\Me\document.pdf"
+- "Search for files matching regex `test_.*\.py$`"
+- "Find empty folders in D:\Archive"
+- "What's the total size of all MP3 files?"
+- "How many JavaScript files are in this project?"
+- "Find hidden files in C:\Windows"
+- "Export all log files to a CSV"
+
+## Sort Options
+
+Many tools support `sort_by` parameter:
+- `name`, `path`, `size`, `extension`
+- `date-modified`, `date-created`, `date-accessed`
+- Add `-descending` for reverse order (e.g., `size-descending`)
 
 ## Development
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/mcp-everything-search.git
+git clone https://github.com/essovius/mcp-everything-search.git
 cd mcp-everything-search
 
 # Create virtual environment
