@@ -268,7 +268,7 @@ def open_file_location(file_path: str) -> str:
         return f"File not found: {file_path}"
     
     try:
-        subprocess.run(["explorer", "/select,", file_path], check=True)
+        subprocess.run(["explorer", "/select,", file_path])
         return f"Opened folder containing: {file_path}"
     except Exception as e:
         return f"Error opening location: {e}"

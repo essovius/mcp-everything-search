@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2025-01-01
+
+### Fixed
+- `open_file_location` no longer reports false errors (Windows explorer.exe returns non-zero exit code even on success)
+
 ## [0.1.0] - 2025-01-01
 
 ### Added
