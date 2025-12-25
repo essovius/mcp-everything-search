@@ -150,10 +150,10 @@ def search_regex(
         max_results: Maximum number of results (default 50)
         match_case: Enable case-sensitive search
     """
-    args = ["-regex", "-n", str(max_results)]
+    args = ["-n", str(max_results)]
     if match_case: args.append("-case")
     if folder_path: args.extend(["-path", folder_path])
-    args.append(pattern)
+    args.extend(["-regex", pattern])  # pattern must come right after -regex
     
     success, output = run_es_command(args)
     return format_file_list(output) if success else f"Search error: {output}"
@@ -370,7 +370,7 @@ def get_result_count(query: str, folder_path: str = "", extension: str = "") -> 
     args = ["-get-result-count"]
     if folder_path: args.extend(["-path", folder_path])
     
-    search_parts = [query] if query else []
+    search_parts = [query] if query and query != "*" else []
     if extension: search_parts.append(f"ext:{extension.lstrip('.')}")
     if search_parts: args.append(" ".join(search_parts))
     
@@ -391,7 +391,7 @@ def get_total_size(query: str, folder_path: str = "", extension: str = "") -> st
     args = ["-get-total-size"]
     if folder_path: args.extend(["-path", folder_path])
     
-    search_parts = [query] if query else []
+    search_parts = [query] if query and query != "*" else []
     if extension: search_parts.append(f"ext:{extension.lstrip('.')}")
     if search_parts: args.append(" ".join(search_parts))
     

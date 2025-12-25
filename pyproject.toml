@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mcp-everything-search"
-version = "0.2.0"
+version = "0.2.1"
 description = "An MCP server for Everything (voidtools) file search"
 readme = "README.md"
 license = "MIT"

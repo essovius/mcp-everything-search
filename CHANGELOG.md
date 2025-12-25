@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2025-01-01
+
+### Fixed
+- `search_regex` - Pattern now correctly placed after `-regex` flag
+- `get_total_size` - Fixed garbage output when using `*` wildcard
+
 ## [0.2.0] - 2025-01-01
 
 ### Added
